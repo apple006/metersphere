@@ -66,7 +66,7 @@
           <el-tooltip :content="$t('test_track.case.unlink')"
                       placement="top" :enterable="false">
             <el-button type="danger" icon="el-icon-delete" size="mini"
-                       circle :disabled="scope.row.platform !== 'Local'"
+                       circle
                        @click="deleteIssue(scope.row)"
             />
           </el-tooltip>
@@ -152,6 +152,7 @@ export default {
       this.page.result = this.$post("/issues/delete/relate", {id: row.id, caseId: this.caseId}, () => {
         this.getIssues();
         this.$success(this.$t('commons.delete_success'));
+        this.$success(this.$t('test_track.cancel_relevance_success'));
       })
     },
   }
